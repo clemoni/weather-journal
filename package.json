@@ -1,0 +1,24 @@
+{
+  "name": "weather-journal",
+  "version": "1.0.0",
+  "description": "3nd Project of the Front End Web Developer Nanodegree Program with UDACITY.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemoni/weather-journal.git"
+  },
+  "keywords": [
+    "udacity",
+    "weather"
+  ],
+  "author": "Clement Liscoet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clemoni/weather-journal/issues"
+  },
+  "homepage": "https://github.com/clemoni/weather-journal#readme"
+}
