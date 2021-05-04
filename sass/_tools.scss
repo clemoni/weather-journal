@@ -1,0 +1,13 @@
+@import 'base';
+
+@mixin message($color){
+    background-color:$color;
+    color:darken($color, 50);
+}
+
+
+@mixin messageColor($message-type){
+    @if $message-type == 'danger'{
+        @include message($message-danger)
+    }
+}

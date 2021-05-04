@@ -7,7 +7,14 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+// set public directory
+app.use(express.static("/public"));
+
 app.use(cors());
+
+app.get("/weather", (req, res) => {
+  res.send("ok");
+});
 
 app.listen(PORT, (err) => {
   try {
