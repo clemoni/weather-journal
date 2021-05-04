@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Journal</title>
+  <meta name="description" content="Front End Web Developer Nanodegree Program 3nd Project">
+  <script src="https://kit.fontawesome.com/850cb1f07f.js" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="./css/style.css" /> -->
+</head>
+<body>
+  <div class="container">
+      <!-- NAVBAR contains main title -->
+    <nav class="navbar">
+      <h1 class='navbar__title'><span>Weather</span> <span>Journal</span></h1>
+    </nav>
+
+    <!-- form to entern new log -->
+    <section class="add-log">
+      <form class="add-log__form">
+        <div class="form__group add-log__city">
+          <label for="city" class="add-log__label">Zipcode :</label>
+          <input type="text" class="add-log__input" placeholder="Enter Zipcode here">
+        </div>
+        <div class="form__group add-log__feelings">
+          <label for="feelings" class="add-log__label">How are you feelings?</label>
+          <textarea class="add-log__text-area" placeholder="Enter your feelings here"></textarea>
+        </div>
+        <button class="btn add-log__submit" type="submit">Generate</button>
+      </form>
+    </section>
+
+    <!-- Main content -->
+    <main class="display-log">
+      <h2 class="display-log__title">Most Recent Entry</h2>
+
+      <!-- Logs container -->
+      <div class="display-log__container">
+        <article class="log">
+          <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
+          <div class="log__weather">
+            <img class="weather__icon" src="http://openweathermap.org/img/wn/04d@2x.png" alt="weather icon">
+            <p class="weather__degree">30C</p>
+          </div>
+          <p class="log__feeling">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta deserunt ducimus quisquam cupiditate ab
+            magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
+            Perferendis, amet
+          </p>
+          <!-- <div class="log__actions">
+            <button class="btn">Delete</button>
+          </div> -->
+        </article>
+        <article class="log">
+          <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
+          <div class="log__weather">
+            <img class="weather__icon" src="http://openweathermap.org/img/wn/04d@2x.png" alt="weather icon">
+            <p class="weather__degree">30C</p>
+          </div>
+          <p class="log__feeling">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta deserunt ducimus quisquam cupiditate ab
+              magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
+              Perferendis, amet.
+          </p>
+          <!-- <div class="log__actions">
+            <button class="btn">Delete</button>
+          </div> -->
+        </article>
+        <article class="log">
+          <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
+          <div class="log__weather">
+            <img class="weather__icon" src="http://openweathermap.org/img/wn/04d@2x.png" alt="weather icon">
+            <p class="weather__degree">30C</p>
+          </div>
+          <p class="log__feeling">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta deserunt ducimus quisquam cupiditate ab
+            magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
+            Perferendis, amet.</p>
+          <!-- <div class="log__actions">
+            <button class="btn">Delete</button>
+          </div> -->
+        </article>
+        <article class="log">
+          <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
+          <div class="log__weather">
+            <img class="weather__icon" src="http://openweathermap.org/img/wn/04d@2x.png" alt="weather icon">
+            <p class="weather__degree">30C</p>
+          </div>
+          <div class="log__feeling">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta deserunt ducimus quisquam cupiditate ab
+              magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
+              Perferendis, amet.</p>
+          </div>
+          <!-- <div class="log__actions">
+            <button class="btn">Delete</button>
+          </div> -->
+        </article>
+      </div>
+    </main>
+  </div>
+  </main>
+</body>
+</html>
