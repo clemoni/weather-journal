@@ -7,7 +7,13 @@ require("dotenv").config({ path: "./config/config.env" });
 require("colors");
 
 const logs = [
-  { city: "Paris", weather: { icon: "04d", temp: 12.17 }, feelings: "fdfff" },
+  {
+    date: { day: "6/4/2021", time: "15:18" },
+    city: "Arras",
+    weather: { icon: "02d", temp: 40.17 },
+    feelings:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, doloremque.",
+  },
 ];
 
 const PORT = process.env.PORT || 8080;
@@ -30,9 +36,21 @@ app.get("/", (req, res) => {
 app.get("/weather/:city", getWeatherData);
 
 app.post("/logs", (req, res) => {
-  logs.push(req.body);
-  console.log(logs);
-  res.json("ok");
+  const d = new Date();
+  const date = {
+    day: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`,
+    time: `${d.getUTCHours()}:${d.getUTCMinutes()}`,
+  };
+
+  const { body } = req;
+  const data = { date, ...body };
+  logs.push(data);
+
+  res.json(logs);
+});
+
+app.get("/logs", (req, res) => {
+  res.json(logs);
 });
 
 app.listen(PORT, (err) => {
