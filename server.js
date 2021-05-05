@@ -44,7 +44,7 @@ app.post("/logs", (req, res) => {
 
   const { body } = req;
   const data = { date, ...body };
-  projectData.push(data);
+  projectData.unshift(data);
 
   res.json(projectData);
 });
