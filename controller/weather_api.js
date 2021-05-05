@@ -1,8 +1,10 @@
+const fetch = require("node-fetch");
+
 const weather_api = {
-  key: "6daef4f9504a9ac32da1e7284323fd5a",
+  key: null,
   city: "London",
   setUrl: function () {
-    return `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.key}`;
+    return `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=${this.key}`;
   },
   getData: async function () {
     const url = this.setUrl();
@@ -11,3 +13,5 @@ const weather_api = {
     return responseData;
   },
 };
+
+module.exports = weather_api;
