@@ -25,6 +25,8 @@ submitBtn.addEventListener("click", (e) => {
               clearContainerLogs();
               printContainerLogs(data);
               ["city", "feelings"].map((item) => (getById(item).value = ""));
+              insertAlertContainer(alertSuccess)("New log added");
+              switchElementDisplay(alertContainer)(switchDisplay);
             })
           : switchElementDisplay(alertContainer)(switchDisplay);
       });
