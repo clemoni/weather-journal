@@ -6,7 +6,7 @@ const getWeatherData = require("./controller/weather_api");
 require("dotenv").config({ path: "./config/config.env" });
 require("colors");
 
-const logs = [
+const projectData = [
   {
     date: { day: "6/4/2021", time: "15:18" },
     city: "Arras",
@@ -44,13 +44,13 @@ app.post("/logs", (req, res) => {
 
   const { body } = req;
   const data = { date, ...body };
-  logs.push(data);
+  projectData.push(data);
 
-  res.json(logs);
+  res.json(projectData);
 });
 
 app.get("/logs", (req, res) => {
-  res.json(logs);
+  res.json(projectData);
 });
 
 app.listen(PORT, (err) => {
