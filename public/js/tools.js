@@ -37,3 +37,16 @@ const alertMessage = createAlertContainer(createAlertMessage);
 const alertDanger = alertMessage("danger");
 const alertSuccess = alertMessage("success");
 const alertWarning = alertMessage("warning");
+
+const insertAlert = (alertContainer) => (alert) => (message) => {
+  alertContainer.appendChild(alert(message));
+  return alertContainer;
+};
+
+const switchDisplay = (state) => {
+  return state === "block" ? { state: "none" } : { state: "block" };
+};
+
+const switchElementDisplay = (element) => (switchDisplay) => {
+  element.style.display = switchDisplay(element.style.display).state;
+};

@@ -1,5 +1,8 @@
-const messageContainer = getByClass("message");
+const alertContainer = getByClass("message");
+
 const submitBtn = getByClass("add-log__submit");
+
+const insertAlertContainer = insertAlert(alertContainer);
 
 const formHandler = (form) => {
   const response = Object.entries(form)
@@ -8,8 +11,7 @@ const formHandler = (form) => {
       return errorMessage(isUndefined(value))(`${name} field is missing`);
     })
     .filter((message) => message)
-    .map((message) => alertDanger(message))
-    .map((alertMessage) => messageContainer.appendChild(alertMessage));
+    .map((message) => insertAlertContainer(alertDanger)(message));
   return response.length;
 };
 
@@ -19,10 +21,33 @@ const getWeatherData = async (url) => {
   return responseData;
 };
 
+const dispatchWeatherData = (result, city, feelings) => {
+  if (result.code === 200) {
+    const { code, ...weather } = result;
+    const newLog = { city, weather, feelings };
+    return newLog;
+  } else {
+    insertAlertContainer(alertDanger)(result.message);
+  }
+};
+
+const postWeatherData = async (url, newLog) => {
+  const response = await fetch(url, {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newLog),
+  });
+  return response.json();
+};
+
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  messageContainer.innerHTML = "";
-  messageContainer.style.display = "none";
+
+  alertContainer.innerHTML = "";
+  alertContainer.style.display = "none";
 
   const getIdValue = getInputValue(getById);
 
@@ -31,22 +56,20 @@ submitBtn.addEventListener("click", (e) => {
   const resForm = formHandler(form);
   if (resForm === 0) {
     const { value: city } = form[0];
+    const { value: feelings } = form[1];
 
     const url = `/weather/${city}`;
 
-    getWeatherData(url).then((result) => console.log(result));
+    getWeatherData(url)
+      .then((result) => dispatchWeatherData(result, city, feelings))
+      .then((newLog) => {
+        return newLog
+          ? postWeatherData("/logs", newLog).then((data) => {
+              console.log(data);
+            })
+          : switchElementDisplay(alertContainer)(switchDisplay);
+      });
   } else {
-    messageContainer.style.display = "block";
+    switchElementDisplay(alertContainer)(switchDisplay);
   }
-  // new asumc function
-
-  //   console.log(resForm);
-  // .then((response) => {
-  //   if (response.length === 0) {
-  //
-  //   } else {
-  //     messageContainer.style.display = "block";
-  //   }
-  // })
-  // .catch((err) => console.log(err));
 });

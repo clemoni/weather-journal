@@ -23,12 +23,13 @@ const weatherApi = {
 
 const getValidData = (res) => {
   return {
+    code: res.cod,
     icon: res.weather[0].icon,
     temp: res.main.temp,
   };
 };
 const getErrorData = (res) => {
-  return { message: res.message };
+  return { code: res.cod, message: res.message };
 };
 
 const getJsonRes = (res) => {
