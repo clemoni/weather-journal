@@ -20,17 +20,17 @@
     <section class="add-log">
       <form class="add-log__form">
         <div class="message">
-          <div class="message__container message--danger">
+          <!-- <div class="message__container message--danger">
             <p class="message__text">This is bad</p>
-          </div>
+          </div> -->
         </div>
         <div class="form__group add-log__city">
           <label for="city" class="add-log__label">Zipcode :</label>
-          <input type="text" class="add-log__input" placeholder="Enter Zipcode here">
+          <input type="text" class="add-log__input" id='city' placeholder="Enter city here">
         </div>
         <div class="form__group add-log__feelings">
           <label for="feelings" class="add-log__label">How are you feelings?</label>
-          <textarea class="add-log__text-area" placeholder="Enter your feelings here"></textarea>
+          <textarea class="add-log__text-area" id='feelings' placeholder="Enter your feelings here"></textarea>
         </div>
         <button class="btn add-log__submit" type="submit">Generate</button>
       </form>
@@ -42,7 +42,7 @@
 
       <!-- Logs container -->
       <div class="display-log__container">
-        <article class="log">
+        <!-- <article class="log">
           <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
           <div class="log__weather">
             <img class="weather__icon" src="http://openweathermap.org/img/wn/04d@2x.png" alt="weather icon">
@@ -53,9 +53,6 @@
             magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
             Perferendis, amet
           </p>
-          <!-- <div class="log__actions">
-            <button class="btn">Delete</button>
-          </div> -->
         </article>
         <article class="log">
           <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
@@ -68,9 +65,6 @@
               magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
               Perferendis, amet.
           </p>
-          <!-- <div class="log__actions">
-            <button class="btn">Delete</button>
-          </div> -->
         </article>
         <article class="log">
           <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
@@ -82,9 +76,6 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta deserunt ducimus quisquam cupiditate ab
             magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
             Perferendis, amet.</p>
-          <!-- <div class="log__actions">
-            <button class="btn">Delete</button>
-          </div> -->
         </article>
         <article class="log">
           <h3 class="log__date">22 May 2020 <span class=log__time>22h30</span></h3>
@@ -97,13 +88,13 @@
               magnam autem libero provident eligendi? Odit sunt cumque quos necessitatibus laboriosam ut aperiam atque.
               Perferendis, amet.</p>
           </div>
-          <!-- <div class="log__actions">
-            <button class="btn">Delete</button>
-          </div> -->
-        </article>
+        </article> -->
       </div>
     </main>
   </div>
   </main>
+  <script src="./js/tools.js"></script>
+  <script src="./js/weather_api.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>
