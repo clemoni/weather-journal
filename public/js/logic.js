@@ -1,5 +1,5 @@
 const alertContainerDom = getByClass("message"); // get Container Error DOM
-const submitBtn = getByClass("add-log__submit"); // get Form DOM
+const submitBtn = getByClass("add-log__submit"); // get button submit of form
 // partial currying of  Container > appendChild > alert
 const insertAlertDom = _insertAlertDom(alertContainerDom);
 

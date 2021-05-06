@@ -1,3 +1,8 @@
+/**
+ * Create the DOM artile for each log
+ * @param {object} log
+ * @returns
+ */
 const createArticle = (log) => {
   const title = createElementContent("h3")(["class", "log__date"])(
     `${log.city}`
