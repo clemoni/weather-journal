@@ -53,6 +53,11 @@ const getInputValue = _PipeInputValue(_getElement, _getValue);
 const getInputValueID = getInputValue("#");
 const getInputValueClass = getInputValue(".");
 
+/**
+ * Creat element DOM with a diven type 'p', 'div'
+ * @param {string} type of element
+ * @returns DOM element
+ */
 const _createElement = (type) => (...attributes) => {
   const element = document.createElement(type);
   !attributes[0]
@@ -61,17 +66,34 @@ const _createElement = (type) => (...attributes) => {
   return element;
 };
 
+/**
+ * Create text node
+ * @param {string} text
+ * @returns
+ */
 const _createContent = (text) => {
   const content = document.createTextNode(text);
   return content;
 };
 
+/**
+ * Compose function for creating contente within text node
+ * @param {function} f element dom
+ * @param {function} text content
+ * @returns
+ */
 const _PipeElementContent = (f, g) => (type) => (attributes) => (text) => {
   const el = f(type)(attributes);
   el.appendChild(g(text));
   return el;
 };
 
+/**
+ * Append list of element to Parent element
+ * @param {*} element parent
+ * @param {*} children element
+ * @returns
+ */
 const _insertElement = (element) => (...children) => {
   children.map((child) => element.appendChild(child));
   return element;
