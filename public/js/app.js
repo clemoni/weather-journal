@@ -3,12 +3,12 @@ getLog("/logs").then((data) => printContainerLogs(data));
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  alertContainer.innerHTML = "";
-  alertContainer.style.display = "none";
+  alertContainerDom.innerHTML = "";
+  alertContainerDom.style.display = "none";
 
-  const getIdValue = getInputValue(getById);
+  // const getIdValue = getInputValue(getById);
 
-  const form = ["city", "feelings"].map((item) => getIdValue(item));
+  const form = ["city", "feelings"].map((item) => getInputValueID(item));
 
   const resForm = formHandler(form);
   if (resForm === 0) {
@@ -25,12 +25,12 @@ submitBtn.addEventListener("click", (e) => {
               clearContainerLogs();
               printContainerLogs(data);
               ["city", "feelings"].map((item) => (getById(item).value = ""));
-              insertAlertContainer(alertSuccess)("New log added");
-              switchElementDisplay(alertContainer)(switchDisplay);
+              insertAlertDom(alertSuccess)("New log added");
+              _switchElementDisplay(alertContainerDom)(_switchDisplay);
             })
-          : switchElementDisplay(alertContainer)(switchDisplay);
+          : _switchElementDisplay(alertContainerDom)(_switchDisplay);
       });
   } else {
-    switchElementDisplay(alertContainer)(switchDisplay);
+    _switchElementDisplay(alertContainerDom)(_switchDisplay);
   }
 });

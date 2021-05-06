@@ -1,15 +1,16 @@
-const alertContainer = getByClass("message");
+const alertContainerDom = getByClass("message");
 const submitBtn = getByClass("add-log__submit");
-const insertAlertContainer = insertAlert(alertContainer);
+const insertAlertDom = _insertAlertDom(alertContainerDom);
+console.log(insertAlertDom(alertDanger)("pouette"));
 
 const formHandler = (form) => {
   const response = Object.entries(form)
     .map((element) => {
       const { name, value } = element[1];
-      return errorMessage(isUndefined(value))(`${name} field is missing`);
+      return _errorMessage(_isUndefined(value))(`${name} field is missing`);
     })
     .filter((message) => message)
-    .map((message) => insertAlertContainer(alertDanger)(message));
+    .map((message) => insertAlertDom(alertDanger)(message));
   return response.length;
 };
 
@@ -25,7 +26,7 @@ const dispatchWeatherData = (result, city, feelings) => {
     const newLog = { city, weather, feelings };
     return newLog;
   } else {
-    insertAlertContainer(alertDanger)(result.message);
+    insertAlertDom(alertDanger)(result.message);
   }
 };
 

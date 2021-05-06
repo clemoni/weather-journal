@@ -1,32 +1,42 @@
-const createAlertMessage = (content) => {
-  const message = document.createTextNode(content);
-  const pMessage = document.createElement("p");
-  pMessage.classList.add("message__text");
-  pMessage.appendChild(message);
-  return pMessage;
+const _createAlertContainer = (_createElement) => (type) => (attribute) => (
+  typeAlert
+) => {
+  const att = `${attribute[1]}${typeAlert}`;
+
+  return _createElement(type)([attribute[0], att]);
 };
 
-const createAlertContainer = (fn) => (type) => (content) => {
-  const divMessage = document.createElement("div");
-  divMessage.classList.add("message__container", `message--${type}`);
-  divMessage.appendChild(fn(content));
-  return divMessage;
+const alertContainer = _createAlertContainer(_createElement)("div")([
+  "class",
+  `message__container message--`,
+]);
+
+const alertMessage = createElementContent("p")(["class", "message__text"]);
+
+const _PipeAlert = (container, message) => (typeAlert) => (content) => {
+  const divContainer = container(typeAlert);
+  const pMessage = message(content);
+  divContainer.appendChild(pMessage);
+  return divContainer;
 };
 
-const alertMessage = createAlertContainer(createAlertMessage);
-const alertDanger = alertMessage("danger");
-const alertSuccess = alertMessage("success");
-const alertWarning = alertMessage("warning");
+const alert = _PipeAlert(alertContainer, alertMessage);
 
-const insertAlert = (alertContainer) => (alert) => (message) => {
-  alertContainer.appendChild(alert(message));
-  return alertContainer;
+// const alertMessage = createAlertContainer(createAlertMessage);
+const alertDanger = alert("danger");
+const alertSuccess = alert("success");
+const alertWarning = alert("warning");
+
+const _insertAlertDom = (domContainer) => (alert) => (message) => {
+  domContainer.appendChild(alert(message));
+  return domContainer;
 };
 
-const switchDisplay = (state) => {
+const _switchDisplay = (state) => {
   return state === "block" ? { state: "none" } : { state: "block" };
 };
 
-const switchElementDisplay = (element) => (switchDisplay) => {
+const _switchElementDisplay = (element) => (switchDisplay) => {
+  console.log(element);
   element.style.display = switchDisplay(element.style.display).state;
 };

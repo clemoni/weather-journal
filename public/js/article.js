@@ -1,30 +1,3 @@
-// function
-const designElement = (type) => (...attributes) => {
-  const element = document.createElement(type);
-  !attributes[0]
-    ? null
-    : attributes.map((att) => element.setAttribute(att[0], att[1]));
-  return element;
-};
-
-const createContent = (text) => {
-  const content = document.createTextNode(text);
-  return content;
-};
-
-const compose = (f, g) => (type) => (attributes) => (text) => {
-  const el = f(type)(attributes);
-  el.appendChild(g(text));
-  return el;
-};
-
-const insertElement = (element) => (...children) => {
-  children.map((child) => element.appendChild(child));
-  return element;
-};
-
-const createElementContent = compose(designElement, createContent);
-
 const createArticle = (log) => {
   const title = createElementContent("h3")(["class", "log__date"])(
     `${log.city}`
@@ -32,9 +5,9 @@ const createArticle = (log) => {
   const subTitle = createElementContent("span")(["class", "log__time"])(
     ` ${log.date.day} ${log.date.time}`
   );
-  const completeTitle = insertElement(title)(subTitle);
+  const completeTitle = _insertElement(title)(subTitle);
 
-  const imgArticle = designElement("img")(
+  const imgArticle = _createElement("img")(
     ["alt", "weather icon"],
     ["src", `http://openweathermap.org/img/wn/${log.weather.icon}@2x.png`],
     ["class", "weather__icon"]
@@ -42,15 +15,15 @@ const createArticle = (log) => {
   const pweather = createElementContent("p")(["class", "weather__degree"])(
     `${log.weather.temp}C`
   );
-  const divWeather = designElement("div")(["class", "log__weather"]);
-  divWeatherBundle = insertElement(divWeather)(imgArticle, pweather);
+  const divWeather = _createElement("div")(["class", "log__weather"]);
+  divWeatherBundle = _insertElement(divWeather)(imgArticle, pweather);
 
   const feelingp = createElementContent("p")()(`${log.feelings}`);
-  const feelingDiv = designElement("div")(["class", "log__feeling"]);
-  const feelingBundle = insertElement(feelingDiv)(feelingp);
+  const feelingDiv = _createElement("div")(["class", "log__feeling"]);
+  const feelingBundle = _insertElement(feelingDiv)(feelingp);
 
-  const articleLog = designElement("article")(["class", "log"]);
-  const articleLogBundle = insertElement(articleLog)(
+  const articleLog = _createElement("article")(["class", "log"]);
+  const articleLogBundle = _insertElement(articleLog)(
     completeTitle,
     divWeatherBundle,
     feelingBundle
@@ -61,7 +34,7 @@ const createArticle = (log) => {
 const logContainer = getByClass("display-log__container");
 
 const printLogs = (container = logContainer) => (logs) => {
-  logs.map((log) => insertElement(container)(createArticle(log)));
+  logs.map((log) => _insertElement(container)(createArticle(log)));
 };
 
 clearLogs = (container) => () => {
