@@ -8,6 +8,6 @@ This project requires to create an asynchronous web app that uses Web API and us
 
 ## Prerequisites
 
-The `body-parser` package has not been installed since `express.urlencoded` is doing the same job.
+The `body-parser` package has not been installed since it's now implemented with `express` with `express.urlencoded`.
 
 I replaced the `ZIP code` by `city` in Europe it makes more sense.
